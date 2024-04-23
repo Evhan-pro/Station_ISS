@@ -64,6 +64,8 @@ flutter:
     - assets/models/Earth.glb
     - assets/images/starsBackground.jpg
     - assets/images/starsBackground.webp
+    - assets/models/ISS_stationary.glb
+    - assets/models/earth1k.glb
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

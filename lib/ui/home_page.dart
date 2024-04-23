@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
               child: ModelViewer(
                 src: 'assets/models/Earth.glb',
                 iosSrc: 'assets/models/Earth.glb',
-                arModes: ['scene-viewer', 'quick-look'],
                 alt: "Earth",
                 ar: false,
                 autoRotate: true,

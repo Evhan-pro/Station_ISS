@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:suivi_iss/ui/home_page.dart';
-import 'package:suivi_iss/ui/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'IssOrbit',
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: HomePage(),
     );
   }
 }
