@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 
-class ISSMapPage extends StatefulWidget {
+abstract class ISSMapPage extends StatefulWidget {
   const ISSMapPage({Key? key}) : super(key: key);
+}
+
+class MapsPage extends StatefulWidget {
+  const MapsPage({super.key});
 
   @override
   State<ISSMapPage> createState() => _ISSMapPageState();
