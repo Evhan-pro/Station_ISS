@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:suivi_iss/ui/screen/main_screen.dart';
 import 'package:suivi_iss/ui/screen/maps_page.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -38,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MapsPage()),
+                    MaterialPageRoute(builder: (context) => MainScreen()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
