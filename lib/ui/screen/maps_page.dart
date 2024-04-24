@@ -12,15 +12,13 @@ class MapsPage extends StatefulWidget {
 }
 
 class _MapsPageState extends State<MapsPage> {
-  final LatLng _initialPosition =
-      const LatLng(0, 0); // Position initiale de la carte
+  final LatLng _initialPosition = const LatLng(0, 0);
   GoogleMapController? _controller;
   Marker? _issMarker;
 
   @override
   void initState() {
     super.initState();
-    _fetchISSPosition();
     Timer.periodic(const Duration(seconds: 1), (timer) => _fetchISSPosition());
   }
 
@@ -33,18 +31,28 @@ class _MapsPageState extends State<MapsPage> {
         double.parse(data['iss_position']['latitude']),
         double.parse(data['iss_position']['longitude']),
       );
-      _updateISSMarker(issPosition);
+      _loadMarkerImage(issPosition);
     } catch (e) {
       debugPrint('Error fetching ISS position: $e');
     }
   }
 
-  void _updateISSMarker(LatLng position) {
+  Future<void> _loadMarkerImage(LatLng position) async {
+    try {
+      final BitmapDescriptor icon = await BitmapDescriptor.fromAssetImage(
+          ImageConfiguration(), 'assets/images/stationiss.png');
+      _updateISSMarker(position, icon);
+    } catch (e) {
+      debugPrint('Failed to load marker icon: $e');
+    }
+  }
+
+  void _updateISSMarker(LatLng position, BitmapDescriptor icon) {
     setState(() {
       _issMarker = Marker(
         markerId: const MarkerId('iss'),
         position: position,
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
+        icon: icon,
       );
     });
     _controller?.moveCamera(CameraUpdate.newLatLng(position));
@@ -64,7 +72,7 @@ class _MapsPageState extends State<MapsPage> {
           target: _initialPosition,
           zoom: 4.0,
         ),
-        markers: {_issMarker!},
+        markers: _issMarker != null ? {_issMarker!} : {},
         mapType: MapType.satellite,
       ),
     );
