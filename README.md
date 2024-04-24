@@ -1,16 +1,27 @@
-# suivi_iss
+##Projet de Suivi de la Station Spatiale Internationale (ISS)
 
-A new Flutter project.
+#Ce projet Flutter permet de suivre en temps réel la position de la Station Spatiale Internationale (ISS) en utilisant les API de Google Maps et l'API de Open Notify.
+Fonctionnalités
 
-## Getting Started
+    Visualisation en temps réel : Visualisez la position actuelle de l'ISS sur une carte grâce à l'API Google Maps.
+    Informations détaillées : Obtenez des informations détaillées sur la position actuelle de l'ISS grâce à l'API Open Notify.
+    Interface utilisateur intuitive : Naviguez facilement entre la vue de la carte et les informations détaillées grâce à une interface utilisateur claire et intuitive.
 
-This project is a starting point for a Flutter application.
+#Technologies Utilisées
 
-A few resources to get you started if this is your first Flutter project:
+    Flutter : Ce projet est développé avec Flutter, un framework de Google qui permet de construire des applications natives compilées.
+    Google Maps API : Utilisée pour intégrer des cartes interactives et visualiser la position de l'ISS.
+    Open Notify API : Cette API fournit des données en temps réel sur la localisation de l'ISS. Plus d'informations sont disponibles ici: ISS Location Now.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+#Configuration
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#Pour exécuter ce projet, vous devez configurer quelques éléments clés :
+
+    Installation des dépendances :
+        Assurez-vous d'avoir Flutter installé sur votre machine.
+        Exécutez flutter pub get pour installer toutes les dépendances nécessaires du projet.
+
+    Exécution de l'application :
+        Utilisez flutter run dans le terminal pour lancer l'application sur un dispositif ou un émulateur.
+
+Developpé par : Omar Nadif et Evhan Linget
