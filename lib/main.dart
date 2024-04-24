@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:suivi_iss/ui/home_page.dart';
+import 'package:suivi_iss/ui/screen/maps_page.dart';
 
 void main() {
   runApp(const MyApp());

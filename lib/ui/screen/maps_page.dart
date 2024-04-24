@@ -4,18 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 
-abstract class ISSMapPage extends StatefulWidget {
-  const ISSMapPage({Key? key}) : super(key: key);
-}
-
 class MapsPage extends StatefulWidget {
   const MapsPage({super.key});
 
   @override
-  State<ISSMapPage> createState() => _ISSMapPageState();
+  _MapsPageState createState() => _MapsPageState();
 }
 
-class _ISSMapPageState extends State<ISSMapPage> {
+class _MapsPageState extends State<MapsPage> {
   final LatLng _initialPosition =
       const LatLng(0, 0); // Position initiale de la carte
   GoogleMapController? _controller;
