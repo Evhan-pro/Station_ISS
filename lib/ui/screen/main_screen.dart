@@ -23,7 +23,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _selectedIndex == 0 ?  MapsPage() :  SatellitePage(),
+        child: _selectedIndex == 0 ? const MapsPage() : SatellitePage(),
       ),
       bottomNavigationBar: buildBottomNavBar(),
     );
@@ -58,5 +58,4 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-
 }
