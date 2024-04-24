@@ -39,6 +39,7 @@ class _SatellitePageState extends State<SatellitePage> {
                     "divers domaines.",
                 style: TextStyle(
                   fontSize: 16.0,
+                  height: 1.4,  // Spazio tra le linee
                 ),
                 textAlign: TextAlign.justify,
               ),
@@ -46,8 +47,8 @@ class _SatellitePageState extends State<SatellitePage> {
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
-                "FAQ sur la Station Spatiale Internationale",
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                "FAQ ",
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.blue),
               ),
             ),
             ...buildFAQs(),
@@ -59,46 +60,48 @@ class _SatellitePageState extends State<SatellitePage> {
 
   List<Widget> buildFAQs() {
     return [
-      const ExpansionTile(
-        title: Text("Comment les astronautes vivent-ils dans l'ISS?"),
-        children: [
-          ListTile(
-            title: Text("Les astronautes vivent dans des conditions de microgravité, ce qui requiert des adaptations spéciales pour dormir, manger et faire de l'exercice."),
-          )
-        ],
+      faqTile(
+          "Comment les astronautes vivent-ils dans l'ISS?",
+          "Les astronautes vivent dans des conditions de microgravité, ce qui requiert des adaptations spéciales pour dormir, manger et faire de l'exercice."
       ),
-      const ExpansionTile(
-        title: Text("Quels types de recherches sont menés sur l'ISS?"),
-        children: [
-          ListTile(
-            title: Text("L'ISS sert de laboratoire pour la recherche scientifique dans les domaines de la biologie, la physique, l'astronomie et d'autres sciences."),
-          )
-        ],
+      faqTile(
+          "Quels types de recherches sont menés sur l'ISS?",
+          "L'ISS sert de laboratoire pour la recherche scientifique dans les domaines de la biologie, la physique, l'astronomie et d'autres sciences."
       ),
-      const ExpansionTile(
-        title: Text("Combien de personnes peuvent vivre sur l'ISS?"),
-        children: [
-          ListTile(
-            title: Text("L'ISS peut accueillir un équipage permanent de six personnes, avec la capacité d'accueillir jusqu'à dix personnes pendant les changements d'équipage ou les visites spéciales."),
-          )
-        ],
+      faqTile(
+          "Combien de personnes peuvent vivre sur l'ISS?",
+          "L'ISS peut accueillir un équipage permanent de six personnes, avec la capacité d'accueillir jusqu'à dix personnes pendant les changements d'équipage ou les visites spéciales."
       ),
-      const ExpansionTile(
-        title: Text("Quelle est la durée d'une mission sur l'ISS?"),
-        children: [
-          ListTile(
-            title: Text("La durée moyenne d'une mission sur l'ISS est d'environ six mois. Toutefois, certains astronautes restent pour des missions plus longues ou plus courtes, selon les besoins de la mission."),
-          )
-        ],
+      faqTile(
+          "Quelle est la durée d'une mission sur l'ISS?",
+          "La durée moyenne d'une mission sur l'ISS est d'environ six mois. Toutefois, certains astronautes restent pour des missions plus longues ou plus courtes, selon les besoins de la mission."
       ),
-      const ExpansionTile(
-        title: Text("Comment l'ISS est-elle ravitaillée?"),
-        children: [
-          ListTile(
-            title: Text("L'ISS est régulièrement ravitaillée par des vaisseaux non habités lancés depuis la Terre. Ces vaisseaux transportent nourriture, expériences scientifiques, pièces de rechange et d'autres fournitures essentielles."),
-          )
-        ],
+      faqTile(
+          "Comment l'ISS est-elle ravitaillée?",
+          "L'ISS est régulièrement ravitaillée par des vaisseaux non habités lancés depuis la Terre. Ces vaisseaux transportent nourriture, expériences scientifiques, pièces de rechange et d'autres fournitures essentielles."
       ),
     ];
+  }
+
+  Widget faqTile(String question, String answer) {
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        title: Text(question, style: TextStyle(fontWeight: FontWeight.bold)),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              answer,
+              style: TextStyle(fontSize: 15.0, color: Colors.grey[600]),
+            ),
+          )
+        ],
+        iconColor: Colors.blue,
+        collapsedIconColor: Colors.grey,
+        backgroundColor: Colors.blue[50],
+        childrenPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      ),
+    );
   }
 }
