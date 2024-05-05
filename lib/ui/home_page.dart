@@ -27,10 +27,9 @@ class _HomePageState extends State<HomePage> {
             const Expanded(
               child: ModelViewer(
                 src: 'assets/models/Earth.glb',
-                iosSrc: 'assets/models/Earth.glb',
                 alt: "Earth",
                 ar: false,
-                autoRotate: true,
+                autoRotate: false,
                 disableZoom: true,
               ),
             ),
