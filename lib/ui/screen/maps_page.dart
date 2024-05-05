@@ -1,8 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:http/http.dart' as http;
+import 'iss_service.dart'; // Assurez-vous que le chemin d'importation est correct
 
 class MapsPage extends StatefulWidget {
   const MapsPage({super.key});
@@ -15,6 +14,7 @@ class _MapsPageState extends State<MapsPage> {
   final LatLng _initialPosition = const LatLng(0, 0);
   GoogleMapController? _controller;
   Marker? _issMarker;
+  final IssService _issService = IssService();
 
   @override
   void initState() {
@@ -24,13 +24,7 @@ class _MapsPageState extends State<MapsPage> {
 
   Future<void> _fetchISSPosition() async {
     try {
-      final response =
-          await http.get(Uri.parse('http://api.open-notify.org/iss-now.json'));
-      final data = jsonDecode(response.body);
-      final issPosition = LatLng(
-        double.parse(data['iss_position']['latitude']),
-        double.parse(data['iss_position']['longitude']),
-      );
+      final issPosition = await _issService.fetchIssPosition();
       _loadMarkerImage(issPosition);
     } catch (e) {
       debugPrint('Error fetching ISS position: $e');
