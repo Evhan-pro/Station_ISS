@@ -19,7 +19,7 @@ class _MapsPageState extends State<MapsPage> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(const Duration(seconds: 1), (timer) => _fetchISSPosition());
+    Timer.periodic(const Duration(seconds: 10), (timer) => _fetchISSPosition());
   }
 
   Future<void> _fetchISSPosition() async {
@@ -61,8 +61,10 @@ class _MapsPageState extends State<MapsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text('Live ISS Tracker'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: GoogleMap(
         onMapCreated: (controller) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suivi_iss/ui/screen/satellite_page.dart';
-
 import 'package:suivi_iss/ui/screen/maps_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -12,6 +12,13 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
+  bool _isDarkTheme = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadTheme();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -19,13 +26,41 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  Future<void> _loadTheme() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isDarkTheme = prefs.getBool('isDarkTheme') ?? false;
+    });
+  }
+
+  Future<void> _toggleTheme() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isDarkTheme = !_isDarkTheme;
+    });
+    await prefs.setBool('isDarkTheme', _isDarkTheme);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: _selectedIndex == 0 ? const MapsPage() : SatellitePage(),
+    return MaterialApp(
+      theme: _isDarkTheme ? ThemeData.dark() : ThemeData.light(),
+      home: Scaffold(
+        extendBody: true, // S'étend derrière la barre de navigation en bas
+        appBar: AppBar(
+          title: Text('Suivi ISS'),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        body: Center(
+          child: _selectedIndex == 0 ? MapsPage() : SatellitePage(),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: _toggleTheme,
+          child: Icon(_isDarkTheme ? Icons.wb_sunny : Icons.nights_stay),
+        ),
+        bottomNavigationBar: buildBottomNavBar(),
       ),
-      bottomNavigationBar: buildBottomNavBar(),
     );
   }
 
@@ -49,7 +84,7 @@ class _MainScreenState extends State<MainScreen> {
           selectedItemColor: Colors.blueAccent,
           unselectedItemColor: Colors.grey[500],
           onTap: _onItemTapped,
-          backgroundColor: Colors.grey[200],
+          backgroundColor: Colors.grey[200], // Légèrement transparent
           type: BottomNavigationBarType.fixed,
           selectedFontSize: 12,
           unselectedFontSize: 12,

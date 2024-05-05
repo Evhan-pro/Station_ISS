@@ -31,12 +31,12 @@ class _SatellitePageState extends State<SatellitePage> {
               padding: EdgeInsets.all(16.0),
               child: Text(
                 "La Station Spatiale Internationale (ISS) est un habitacle "
-                    "spatial habité en orbite basse terrestre. C'est un projet de "
-                    "coopération internationale qui regroupe plusieurs agences "
-                    "spatiales: NASA, Roscosmos, JAXA, ESA, et CSA. L'ISS sert de "
-                    "microgravité et de laboratoire de recherche en environnement "
-                    "spatial où sont menées des recherches scientifiques dans "
-                    "divers domaines.",
+                "spatial habité en orbite basse terrestre. C'est un projet de "
+                "coopération internationale qui regroupe plusieurs agences "
+                "spatiales: NASA, Roscosmos, JAXA, ESA, et CSA. L'ISS sert de "
+                "microgravité et de laboratoire de recherche en environnement "
+                "spatial où sont menées des recherches scientifiques dans "
+                "divers domaines.",
                 style: TextStyle(
                   fontSize: 16.0,
                 ),
